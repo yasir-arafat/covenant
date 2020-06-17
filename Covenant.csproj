@@ -1,0 +1,115 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\Grunt\**" />
+    <Compile Remove="Data\Tasks\*" />
+    <Compile Remove="Data\ReferenceSourceLibraries\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Data\Grunt\*" />
+    <None Include="wwwroot\css\bootstrap-datetimepicker.css" />
+    <None Include="wwwroot\css\bootstrap-datetimepicker.min.css" />
+    <None Include="wwwroot\js\bootstrap-datetimepicker.min.js" />
+    <None Include="wwwroot\js\bootstrap-datetimepicker.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+    <Folder Include="Data\Tasks\" />
+    <Folder Include="Models\Indicators\" />
+    <Folder Include="Views\" />
+    <Folder Include="Views\Grunt\" />
+    <Folder Include="Views\Shared\" />
+    <Folder Include="Views\Indicator\" />
+    <Folder Include="Views\Launcher\" />
+    <Folder Include="Views\Listener\" />
+    <Folder Include="Views\Credential\" />
+    <Folder Include="Views\CovenantUser\" />
+    <Folder Include="Hubs\" />
+    <Folder Include="Controllers\ApiControllers\" />
+    <Folder Include="Controllers\ListenerControllers\" />
+    <Folder Include="Controllers\ViewControllers\" />
+    <Folder Include="Views\Home\" />
+    <Folder Include="wwwroot\images\" />
+    <Folder Include="Views\GruntTask\" />
+    <Folder Include="Views\GruntTasking\" />
+    <Folder Include="Views\Data\" />
+    <Folder Include="Views\ReferenceSourceLibrary\" />
+    <Folder Include="Views\ReferenceAssembly\" />
+    <Folder Include="Views\EmbeddedResource\" />
+    <Folder Include="Views\HostedFile\" />
+    <Folder Include="Views\Profile\" />
+    <Folder Include="Views\Graph\" />
+    <Folder Include="Views\Template\" />
+    <Folder Include="Data\Tasks\CSharp\" />
+    <Folder Include="Data\Tasks\CSharp\Compiled\" />
+    <Folder Include="wwwroot\webfonts\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.App">
+      <PrivateAssets Condition="'%(PackageReference.Version)' == ''">all</PrivateAssets>
+      <Publish Condition="'%(PackageReference.Version)' == ''">true</Publish>
+    </PackageReference>
+    <PackageReference Include="NLog.Web.AspNetCore" Version="4.5.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="1.1.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+    <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.2.3" />
+    <PackageReference Include="YamlDotNet" Version="5.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.4" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="1.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.1.0-preview1-final" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="nlog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Confuser.Core">
+      <HintPath>refs\Confuser.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Confuser.DynCipher">
+      <HintPath>refs\Confuser.DynCipher.dll</HintPath>
+    </Reference>
+    <Reference Include="Confuser.MSBuild.Tasks">
+      <HintPath>refs\Confuser.MSBuild.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Confuser.Protections">
+      <HintPath>refs\Confuser.Protections.dll</HintPath>
+    </Reference>
+    <Reference Include="Confuser.Renamer">
+      <HintPath>refs\Confuser.Renamer.dll</HintPath>
+    </Reference>
+    <Reference Include="Confuser.Runtime">
+      <HintPath>refs\Confuser.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="dnlib">
+      <HintPath>refs\dnlib.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Data\covenant.db-journal" />
+    <None Remove="Data\covenant.db" />
+  </ItemGroup>
+</Project>
